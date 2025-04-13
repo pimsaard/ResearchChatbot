@@ -6,11 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 app = Flask(__name__)
 
-@app.route("/")
-def home():
-    return "Research Chatbot is running."
-
-@app.route("/botnoi-callback", methods=["POST"])
+@app.route("/botnoi-callback", methods=["POST"])  # ← ต้องมี methods=["POST"]
 def botnoi_callback():
     data = request.get_json()
     query = data.get("message", "")
@@ -25,6 +21,7 @@ def botnoi_callback():
         return "ขออภัย ไม่พบคำตอบในไฟล์นี้"
 
     return jsonify({"reply": answer})
+
 
 
 if __name__ == "__main__":
