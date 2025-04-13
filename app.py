@@ -12,7 +12,7 @@ def botnoi_callback():
     query = data.get("message", "")
     answer = answer_from_book(query)  # อ่านจาก .pkl ซึ่งมาจากไฟล์ .txt
     def answer_from_book(query):
-    with open("Research Writing AI.txt", "r", encoding="utf-8") as f:
+    with open("book_chucks.pkl", "r", encoding="utf-8") as f:
         book = f.read()
     # ทำอย่างง่าย: เช็คว่า query อยู่ตรงไหน
     if query.lower() in book.lower():
