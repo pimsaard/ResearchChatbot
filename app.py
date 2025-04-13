@@ -12,8 +12,8 @@ def botnoi_callback():
     query = data.get("message", "")
     answer = answer_from_book(query)  # อ่านจาก .pkl ซึ่งมาจากไฟล์ .txt
     def answer_from_book(query):
-    with open("book_chucks.pkl", "r", encoding="utf-8") as f:
-        book = f.read()
+    with open("book_chunks.pkl", "rb") as f:
+        book = pickle.load(f)
     # ทำอย่างง่าย: เช็คว่า query อยู่ตรงไหน
     if query.lower() in book.lower():
         return "✅ พบในหนังสือ!"
