@@ -4,7 +4,7 @@ import requests
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import TfidfVectorizer
 
-HUGGINGFACE_API_KEY = os.getenv("HUGGINGFACE_API_KEY")
+HUGGINGFACE_API_KEY = os.getenv(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)
 
 with open("book_chunks.pkl", "rb") as f:
     chunks = pickle.load(f)
@@ -24,7 +24,7 @@ def answer_from_book(query):
 
     response = requests.post(
         "https://api-inference.huggingface.co/models/google/flan-t5-base",
-        headers={"Authorization": f"Bearer {HUGGINGFACE_API_KEY}"},
+        headers={"Authorization": f"Bearer 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"},
         json={"inputs": prompt}
     )
     try:
