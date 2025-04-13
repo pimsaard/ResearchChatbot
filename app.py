@@ -14,8 +14,18 @@ def home():
 def botnoi_callback():
     data = request.get_json()
     query = data.get("message", "")
-    answer = answer_from_book(query)
+    answer = answer_from_book(query)  # อ่านจาก .pkl ซึ่งมาจากไฟล์ .txt
+    def answer_from_book(query):
+    with open("Research Writing AI.txt", "r", encoding="utf-8") as f:
+        book = f.read()
+    # ทำอย่างง่าย: เช็คว่า query อยู่ตรงไหน
+    if query.lower() in book.lower():
+        return "✅ พบในหนังสือ!"
+    else:
+        return "ขออภัย ไม่พบคำตอบในไฟล์นี้"
+
     return jsonify({"reply": answer})
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
